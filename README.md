@@ -12,3 +12,4 @@
 You can upload an English PDF book or file. The software automatically scans the file and collects words to create Wordsearch and Word scramble puzzles. You can position each puzzle flexibly because you can move them around. <br />
 ### For creating automatic puzzle books for personal use or for sale on Amazon or other platforms, it could be your best choice. ###
 # Puzzle
+# Puzzle
