@@ -1,0 +1,5 @@
+mysqlclient
+PyPDF2
+reportlab
+Django
+django-tailwind

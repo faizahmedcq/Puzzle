@@ -13,4 +13,6 @@ urlpatterns = [
     path('addition/',include('addition.urls')),
     path('wordsearch/',include('wordsearch.urls')),
     
+    path("__reload__/", include("django_browser_reload.urls")),  # 👈 add this
+    
 ]+static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)

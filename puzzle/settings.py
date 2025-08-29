@@ -44,7 +44,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    
+    # tailwind apps
+    'tailwind',
+    'theme',
+    'django_browser_reload',
 ]
+TAILWIND_APP_NAME = 'theme'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -54,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+     "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
@@ -82,15 +90,18 @@ WSGI_APPLICATION = 'puzzle.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'puzzle',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost'
+        'NAME': 'sudoko',
+        'USER': 'faiz',
+        'PASSWORD': 'faiz@6128',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
+
 
 
 # Password validation
