@@ -1,5 +1,10 @@
-{%extends 'base.html' %} {%block content%} {%load static%}
+ 
+{% extends 'base.html' %}
 
+{% block content %}
+{% include 'heroSection.html' %}
+{% include 'puzzleCategories.html' %}
+{% include 'featuredPuzzle.html' %}
 <h1>Homepage</h1>
 <form action="">
     <input type="number" placeholder='10'>
@@ -11,4 +16,6 @@
 <hr>
 <a href="{% url 'wordsearch'%}">WORDSEARCH</a> 
 <hr>
+
+
 {% endblock %}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Puzzle Store</title>
+  <link rel="stylesheet" href="{% static 'css/output.css' %}" />
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+  <!-- Navbar -->
+  <nav class="bg-gray-900 text-white px-6 py-4 flex flex-wrap items-center justify-between">
+
+    <!-- Brand -->
+    <a href="{% url 'home' %}" class="text-xl font-bold border-2 border-yellow-500 rounded-xl px-3 py-1">
+      Amazon <span class="text-yellow-500">KDP</span>
+    </a>
+
+    <!-- Desktop Menu -->
+    <ul class="hidden md:flex space-x-6 text-lg">
+      <li><a href="{% url 'home' %}" class="hover:text-yellow-400">Home</a></li>
+      <li><a href="{% url 'upload' %}" class="hover:text-yellow-400">Upload File</a></li>
+      <li><a href="#" class="hover:text-yellow-400">Puzzle</a></li>
+      <li><a href="#" class="hover:text-yellow-400 opacity-60 cursor-not-allowed">Disabled</a></li>
+    </ul>
+
+    <!-- Search Form -->
+    <form class="flex items-center mt-3 md:mt-0">
+      <input 
+        type="search" 
+        placeholder="Search" 
+        class="px-3 py-2 rounded-l-lg border-none focus:ring-2 focus:ring-yellow-400 text-gray-800"
+      >
+      <button 
+        type="submit" 
+        class="px-4 py-2 bg-yellow-500 rounded-r-lg text-gray-900 font-semibold hover:bg-yellow-400"
+      >
+        Search
+      </button>
+    </form>
+
+    <!-- Mobile Menu Button -->
+    <button 
+      class="md:hidden text-yellow-400 ml-4" 
+      onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
+    >
+      ☰
+    </button>
+
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md:hidden bg-gray-800 text-white hidden px-6 py-4">
+    <ul class="space-y-4">
+      <li><a href="{% url 'home' %}" class="block hover:text-yellow-400">Home</a></li>
+      <li><a href="{% url 'upload' %}" class="block hover:text-yellow-400">Upload File</a></li>
+      <li><a href="#" class="block hover:text-yellow-400">Puzzle</a></li>
+      <li><a href="#" class="block hover:text-yellow-400 opacity-60 cursor-not-allowed">Disabled</a></li>
+    </ul>
+  </div>
+
+  <!-- Content Block -->
+  {% block content %}{% endblock %}
+
+</body>
+</html>

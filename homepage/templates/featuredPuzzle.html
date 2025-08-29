@@ -1,0 +1,50 @@
+{%block content%} {%load static%}
+
+<!-- Featured Puzzles Section -->
+<section class="py-12 px-6">
+  <div class="container mx-auto text-center">
+    <h2 class="text-3xl font-bold text-gray-800 mb-8">
+      Featured Puzzles
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Sudoku -->
+      <div class="bg-gray-100 p-6 rounded-xl shadow-md text-center">
+        <!-- Replace with a Sudoku board preview image -->
+        <div class="w-full h-48 mb-4 rounded-lg overflow-hidden">
+          <img src="{% static 'images/sudoku.png' %}" alt="Sudoku board preview" class="w-full h-auto mb-4 rounded-lg">
+        </div>
+
+        <button class="px-6 py-2 bg-yellow-500 text-gray-900 font-semibold rounded-lg hover:bg-yellow-400 transition">
+          Sudoku
+        </button>
+      </div>
+      
+      <!-- Math Worksheet -->
+      <div class="bg-gray-100 p-6 rounded-xl shadow-md text-center">
+        <!-- Replace with a Math Worksheet preview image -->
+        <div class="w-full h-48 mb-4 rounded-lg overflow-hidden">
+          <img src="{% static 'images/math.jpg' %}" alt="Math worksheet preview" class="w-full h-auto mb-4 rounded-lg">
+        </div>
+
+        <button class="px-6 py-2 bg-yellow-500 text-gray-900 font-semibold rounded-lg hover:bg-yellow-400 transition">
+          Math Worksheet
+        </button>
+      </div>
+
+      <!-- Word Search -->
+      <div class="bg-gray-100 p-6 rounded-xl shadow-md text-center">
+        <!-- Replace with a Word Search preview image -->
+        <div class="w-full h-48 mb-4 rounded-lg overflow-hidden">
+          <img src="{% static 'images/wordsearch.jpg' %}" alt="Word search puzzle preview" class="w-full h-auto mb-4 rounded-lg">
+        </div>
+
+        <button class="px-6 py-2 bg-yellow-500 text-gray-900 font-semibold rounded-lg hover:bg-yellow-400 transition">
+          Word Search
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% endblock %}
