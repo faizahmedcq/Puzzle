@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'addition.apps.AdditionConfig',
     'wordsearch.apps.WordsearchConfig',
     'user_account.apps.UserAccountConfig',
+    'sudoku.apps.SudokuConfig',
     'upload.apps.UploadConfig',
     'django.contrib.admin',
     'django.contrib.auth',

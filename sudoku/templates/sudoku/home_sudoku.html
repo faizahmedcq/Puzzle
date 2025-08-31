@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="px-6">
+    <div class="container mx-auto text-center">
+        <div >
+            <div class="text-center mb-8">
+                <h1 class="text-4xl font-bold text-gray-800 flex items-center justify-center space-x-2">
+                    <svg class="w-8 h-8 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm4 3a1 1 0 011-1h4a1 1 0 110 2H8a1 1 0 01-1-1zm0 4a1 1 0 011-1h4a1 1 0 110 2H8a1 1 0 01-1-1zm0 4a1 1 0 011-1h4a1 1 0 110 2H8a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span>Sudoku Book Generator</span>
+                </h1>
+                <p class="text-gray-500 mt-2">Create your personalized Sudoku puzzle book</p>
+            </div>
+
+            <form method="post" action="{% url 'generate_sudoku_pdf' %}" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {% csrf_token %}
+                <!-- Left Section -->
+                <div class="space-y-6">
+                    <!-- Sudoku Categories -->
+                    <div class="bg-white rounded-lg shadow-xl p-6">
+                        <h2 class="text-xl font-semibold text-gray-700 mb-4">Select Sudoku Categories</h2>
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 mb-4">
+                            <div class="flex items-center space-x-6">
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" name="category_easy" checked class="form-checkbox text-blue-600 rounded">
+                                    <span class="text-gray-700">Easy</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" name="category_medium" checked class="form-checkbox text-blue-600 rounded">
+                                    <span class="text-gray-700">Medium</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" name="category_hard" checked class="form-checkbox text-blue-600 rounded">
+                                    <span class="text-gray-700">Hard</span>
+                                </label>
+                            </div>
+                            <p class="text-sm text-gray-500 mt-2" id="selected-text"></p>
+                        </div>
+                        <div class="grid grid-cols-3 gap-4 text-center">
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-1" for="easy-count">Easy</label>
+                                <input id="easy-count" name="easy_count" type="number" value="50" min="0" class="w-full border border-gray-300 p-2 rounded-lg text-center">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-1" for="medium-count">Medium</label>
+                                <input id="medium-count" name="medium_count" type="number" value="30" min="0" class="w-full border border-gray-300 p-2 rounded-lg text-center">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-1" for="hard-count">Hard</label>
+                                <input id="hard-count" name="hard_count" type="number" value="20" min="0" class="w-full border border-gray-300 p-2 rounded-lg text-center">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Sudoku per page -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h2 class="text-xl font-semibold text-gray-700 mb-4">Sudoku per page</h2>
+                        <select name="sudoku_per_page" class="w-full border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="1">1 puzzle per page</option>
+                            <option value="2">2 puzzles per page</option>
+                            <option value="4">4 puzzles per page</option>
+                            <option value="6">6 puzzles per page</option>
+                        </select>
+                    </div>
+
+                    <!-- Page Layout -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h2 class="text-xl font-semibold text-gray-700 mb-4">Page Layout</h2>
+                        <select name="paper_size" class="w-full border border-gray-300 p-2 rounded-lg">
+                            <option value="page1">8.5 x 11 inches</option>
+                            <option value="page2">6 x 9 inches</option>
+                        </select>
+                    </div>
+                    <!-- Include Solutions -->
+                    <div class="bg-white rounded-lg shadow p-6 flex items-center justify-between">
+                        <span class="text-gray-700 font-medium">Include Solutions</span>
+                        <input type="checkbox" name="include_solutions" class="form-checkbox text-blue-600 rounded">
+                    </div>
+                    <!-- Submit Button -->
+                    <button type="submit" class="w-full bg-blue-600 text-white py-4 rounded-lg font-bold text-lg hover:bg-blue-700 transition-colors">
+                        Generate Sudoku Book PDF
+                    </button>
+                    <p class="text-sm text-gray-500 mt-2">You can generate multiple books with different categories.</p>
+                </div>
+                <!-- Right Section -->
+                <div class="space-y-6">
+                    <!-- Sudoku Preview -->
+                     <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 flex items-center justify-center">
+                        <canvas id="pdfPreviewCanvas" width="600" height="800" class="border border-gray-400"></canvas>
+                    </div>
+                    <!-- Customize PDF Design -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h2 class="text-xl font-semibold text-gray-700 mb-4">Customize PDF Design</h2>
+                        <button type="button" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                            Customize PDF Design
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<script src="{% static 'sudoku/js/generate.js' %}" defer></script>
+<script src="{% static 'sudoku/js/canvas.js' %}" defer></script>
+{% endblock %}

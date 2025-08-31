@@ -1,10 +1,5 @@
-// tailwind.config.js
 module.exports = {
-  content: [
-    "./templates/**/*.html",     // project templates
-    "./**/templates/**/*.html",  // app-level templates
-    "./static/src/**/*.{js,jsx,ts,tsx}" // if you use React/JS
-  ],
+    content: ["./templates/**/*.html", "./**/templates/**/*.html"],
   theme: {
     extend: {},
   },

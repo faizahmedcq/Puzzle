@@ -1,6 +1,6 @@
 from django.shortcuts import render
 import sys
-from Sudoku.Generator import *
+# from Sudok.Generator import *
 import os
 from os import listdir
 from os.path import isfile, join

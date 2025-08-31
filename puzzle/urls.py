@@ -12,7 +12,7 @@ urlpatterns = [
     path('solution/',include('solution.urls')),
     path('addition/',include('addition.urls')),
     path('wordsearch/',include('wordsearch.urls')),
-    
+    path('sudoku/',include('sudoku.urls')),
     path("__reload__/", include("django_browser_reload.urls")),  # 👈 add this
     
 ]+static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)

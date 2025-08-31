@@ -1,0 +1,2 @@
+from .sudoku_views import sudoku_home, generate_pdf
+from .p8_11_generate_sudoku_pdf import generate_sudoku_pdf
